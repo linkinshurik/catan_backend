@@ -22,5 +22,11 @@
     <Compile Remove="Clases\Willage.cs" />
     <Compile Remove="Clases\IslandCard.cs" />
     <Compile Remove="Clases\DevelopCard.cs" />
+    <Compile Remove="Clases\Arable.cs" />
+    <Compile Remove="Clases\Desert.cs" />
+    <Compile Remove="Clases\Forest.cs" />
+    <Compile Remove="Clases\Mine.cs" />
+    <Compile Remove="Clases\Pasture.cs" />
+    <Compile Remove="Clases\Rock.cs" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ namespace Catan.Interfaces
 {
     public interface IGeks
     {
-        int Identifier { get; }
+        EGeks Identifier { get; }
     }
 
     public enum EGeks
