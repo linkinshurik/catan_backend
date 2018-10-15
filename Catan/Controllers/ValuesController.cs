@@ -119,6 +119,39 @@ namespace Catan.Controllers
             }
         }
 
+        [HttpGet("{id}/{position}")]
+        public ActionResult<string> Get(Guid id, int position)
+        {
+        //remove copy-paste
+            using (DatabaseLayer db = new DatabaseLayer())
+            {
+                var land = db.Lands.First((l) => l.Id == id);
+
+                List<IGeks> gridList = new List<IGeks>();
+
+                for (int i = 0, n = 0; i < 19; i++)
+                {
+                    if (land.Geks[i] != (int)EGeks.desert)
+                    {
+                        gridList.Add(GeksFabrik.GetGeks(land.Geks[i], IslandGrid.GetGreedItem(i), land.GeksToken[n]));
+                        n++;
+                    }
+                    else
+                    {
+                        gridList.Add(GeksFabrik.GetGeks(land.Geks[i], IslandGrid.GetGreedItem(i), 7));
+                    }
+                }
+                var related = IslandGrid.GetGeksByPosition(position);
+                List<IGeks> current = new List<IGeks>();
+
+                foreach ( var key in related) {
+                    current.Add(gridList[key]);
+                }
+
+                return Ok(current);
+            }
+        }
+
 
         [HttpGet]
         public ActionResult<Guid> Get()

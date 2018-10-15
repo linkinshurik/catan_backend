@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Catan.Clases
 {
@@ -31,6 +32,17 @@ namespace Catan.Clases
         public static GridItem GetGreedItem(int index) {
 
             return new GridItem(gridStructure[index]);
+        }
+
+        public static List<int> GetGeksByPosition(int index){
+            List<int> result = new List<int>();
+            for (int i = 0; i < gridStructure.Count; i++) {
+                var cur = gridStructure[i].ToList();
+                if ( cur.IndexOf(index) != -1) {
+                    result.Add(i);
+                }
+            }
+            return result;
         }
     }
 
