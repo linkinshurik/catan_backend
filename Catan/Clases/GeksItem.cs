@@ -5,23 +5,19 @@ namespace Catan.Clases
 {
     public class GeksItem: IGeks
     {
-        private EGeks _identifier;
+        public EGeks Identifier { get; }
         public GridItem Coordinates { get; }
         public int Token { get; }
 
         public GeksItem(int num, GridItem coordinates, int token)
         {
-            _identifier = (EGeks)num;
+            Identifier = (EGeks)num;
             Coordinates = coordinates;
             Token = token;
         }
 
-        public EGeks Identifier
-        {
-            get
-            {
-                return _identifier;
-            }
+        public Boolean BuildColony(Colony colony) {
+            return true;
         }
     }
 }

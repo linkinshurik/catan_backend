@@ -15,4 +15,10 @@ namespace Catan.Interfaces
         rock = 4,
         desert = 5
     }
+
+    public enum Colony
+    {
+        village = 0,
+        town = 1
+    }
 }
