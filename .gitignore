@@ -3,3 +3,6 @@
 ################################################################################
 
 /.vs
+/Catan/bin/Debug/netcoreapp2.1
+/Catan/obj/Debug/netcoreapp2.1
+/Catan/obj
