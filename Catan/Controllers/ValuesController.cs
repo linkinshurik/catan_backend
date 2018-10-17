@@ -13,7 +13,7 @@ namespace Catan.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
+        // GET api/users
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -24,7 +24,7 @@ namespace Catan.Controllers
             }
         }
 
-        // GET api/values/5
+        // GET api/users/5
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
@@ -35,10 +35,19 @@ namespace Catan.Controllers
             }
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
+        // POST api/users/register
+        [HttpPost("register")]
+        public void Post([FromBody] User prms)
         {
+            User user = new User
+            {
+                Name = prms.Name,
+                Token = Guid.NewGuid()
+            };
+
+            DBLMethods.AddUser(user);
+
+            Ok(user.Token);
         }
 
         // PUT api/values/5
@@ -74,6 +83,13 @@ namespace Catan.Controllers
                 var game = db.Games.First((g) => g.Id == id);
                 return Ok(game);
             }
+        }
+
+        [HttpPost("join")]
+        public ActionResult<string> Join([FromBody] IJoin prms)
+        {
+            DBLMethods.JoinGame(prms);
+            return Ok(true);
         }
 
         [HttpPost]
@@ -122,4 +138,17 @@ namespace Catan.Controllers
             return Ok(land.Id);
         }
     }
+    [Route("api/game")]
+    public class ProcessController : ControllerBase
+    {
+        [HttpGet("{id}")]
+        public ActionResult<string> Get(Guid id)
+        {
+            var gridList = DBLMethods.GetCurrentBoard(id);
+            var gameProcess = DBLMethods.GetGameStatus(id);
+
+            return Ok(gameProcess);
+        }
+    }
+
 }

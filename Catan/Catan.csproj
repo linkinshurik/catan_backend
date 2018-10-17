@@ -9,7 +9,6 @@
     <Folder Include="Clases\" />
     <Folder Include="Abstract\" />
     <Folder Include="DBL\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,5 +29,7 @@
     <Compile Remove="Clases\Rock.cs" />
     <Compile Remove="DBL\GameProgress.cs" />
     <Compile Remove="DBL\Road.cs" />
+    <Compile Remove="Migrations\20181017074046_AddRouds.cs" />
+    <Compile Remove="Migrations\20181017074046_AddRouds.Designer.cs" />
   </ItemGroup>
 </Project>

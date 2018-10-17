@@ -27,6 +27,12 @@ namespace Catan.Migrations
 
                     b.Property<Guid?>("GameStatusGame");
 
+                    b.Property<Guid?>("GameStatusGame1");
+
+                    b.Property<Guid?>("GameStatusGame2");
+
+                    b.Property<Guid?>("GameStatusGame3");
+
                     b.Property<int>("X");
 
                     b.Property<int>("Y");
@@ -34,6 +40,12 @@ namespace Catan.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("GameStatusGame");
+
+                    b.HasIndex("GameStatusGame1");
+
+                    b.HasIndex("GameStatusGame2");
+
+                    b.HasIndex("GameStatusGame3");
 
                     b.ToTable("Road");
                 });
@@ -139,6 +151,18 @@ namespace Catan.Migrations
                     b.HasOne("Catan.DBL.GameStatus")
                         .WithMany("User1_Roads")
                         .HasForeignKey("GameStatusGame");
+
+                    b.HasOne("Catan.DBL.GameStatus")
+                        .WithMany("User2_Roads")
+                        .HasForeignKey("GameStatusGame1");
+
+                    b.HasOne("Catan.DBL.GameStatus")
+                        .WithMany("User3_Roads")
+                        .HasForeignKey("GameStatusGame2");
+
+                    b.HasOne("Catan.DBL.GameStatus")
+                        .WithMany("User4_Roads")
+                        .HasForeignKey("GameStatusGame3");
                 });
 #pragma warning restore 612, 618
         }

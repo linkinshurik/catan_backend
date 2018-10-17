@@ -18,6 +18,22 @@ namespace Catan.DBL
             return land;
         }
 
+        public static User AddUser(User user) {
+            using (DatabaseLayer db = new DatabaseLayer())
+            {
+                db.Add(user);
+                db.SaveChanges();
+            }
+
+            return user;
+        }
+
+        public static bool JoinGame(IJoin join)
+        {
+            //implement creating the game and joining
+            return true;
+        }
+
         public static List<IGeks> GetCurrentBoard(Guid id) {
             using (DatabaseLayer db = new DatabaseLayer())
             {
@@ -39,6 +55,23 @@ namespace Catan.DBL
                 }
 
                 return gridList;
+            }
+        }
+
+        public static GameStatus GetGameStatus(Guid id)
+        {
+            using (DatabaseLayer db = new DatabaseLayer())
+            {
+                var gameStatus = db.GameLogs.FirstOrDefault((l) => l.Game == id);
+
+                if (gameStatus == null)
+                {
+                    gameStatus = new GameStatus(id);
+                }
+                db.Add(gameStatus);
+                db.SaveChanges();
+
+                return gameStatus;
             }
         }
     }
