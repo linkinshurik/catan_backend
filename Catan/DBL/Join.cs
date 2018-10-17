@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace Catan.Interfaces
 {
-    public interface IJoin
+    public class Join
     {
-        Guid GameId { get; set; }
-        Guid UserId { get; set; }
+        public Guid GameId { get; set; }
+        public Guid UserId { get; set; }
     }
 }

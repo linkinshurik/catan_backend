@@ -28,10 +28,42 @@ namespace Catan.DBL
             return user;
         }
 
-        public static bool JoinGame(IJoin join)
+        public static Game JoinGame(Join join)
         {
-            //implement creating the game and joining
-            return true;
+            using (DatabaseLayer db = new DatabaseLayer())
+            {
+                Game game = db.Games.First((g) => g.Id == join.GameId );
+                if (Guid.Empty == game.User2)
+                {
+                    game.User2 = join.UserId;
+                }
+                else if (Guid.Empty == game.User3)
+                {
+                    game.User3 = join.UserId;
+                }
+                else if (Guid.Empty == game.User4)
+                {
+                    game.User4 = join.UserId;
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException();
+                }
+               
+                db.SaveChanges();
+                return game;
+            }
+        }
+
+        public static IGame CreateGame(Guid id)
+        {
+            using (DatabaseLayer db = new DatabaseLayer())
+            {
+                Game game = new Game() { Id = Guid.NewGuid(), User1 = id, Admin = id ,Active = true };
+                db.Add(game);
+                db.SaveChanges();
+                return game;
+            }
         }
 
         public static List<IGeks> GetCurrentBoard(Guid id) {

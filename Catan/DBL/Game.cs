@@ -1,7 +1,9 @@
 ﻿using System;
+using Catan.Interfaces;
+
 namespace Catan.DBL
 {
-    public class Game
+    public class Game: IGame
     {
         public Guid Id { get; set; }
         public Guid User1 { get; set; }

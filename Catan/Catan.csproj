@@ -8,7 +8,6 @@
     <Folder Include="wwwroot\" />
     <Folder Include="Clases\" />
     <Folder Include="Abstract\" />
-    <Folder Include="DBL\" />
   </ItemGroup>
 
   <ItemGroup>

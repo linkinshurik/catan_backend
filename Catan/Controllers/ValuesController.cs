@@ -86,20 +86,23 @@ namespace Catan.Controllers
         }
 
         [HttpPost("join")]
-        public ActionResult<string> Join([FromBody] IJoin prms)
+        public ActionResult<string> Join([FromBody] Join prms)
         {
-            DBLMethods.JoinGame(prms);
-            return Ok(true);
+            try
+            {
+                var game = DBLMethods.JoinGame(prms);
+                return Ok(game);
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                return BadRequest("There is no free space in this game");
+            }
         }
 
         [HttpPost]
-        public ActionResult<Guid> Post() {
-            using (DatabaseLayer db = new DatabaseLayer()) {
-                Game game = new Game(){ Id = Guid.NewGuid(), Active = true };
-                db.Add(game);
-                db.SaveChanges();
-                return Ok(game.Id);
-            }
+        public ActionResult<Guid> CreateGame([FromBody] User prms) {
+            var game = DBLMethods.CreateGame(prms.Token);
+            return Ok(game.Id);
         }
     }
 
