@@ -7,6 +7,7 @@ namespace Catan.DBL
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Land> Lands { get; set; }
+        public DbSet<GameStatus> GameLogs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

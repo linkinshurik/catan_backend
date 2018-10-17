@@ -28,5 +28,7 @@
     <Compile Remove="Clases\Mine.cs" />
     <Compile Remove="Clases\Pasture.cs" />
     <Compile Remove="Clases\Rock.cs" />
+    <Compile Remove="DBL\GameProgress.cs" />
+    <Compile Remove="DBL\Road.cs" />
   </ItemGroup>
 </Project>
