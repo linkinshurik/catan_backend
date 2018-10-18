@@ -37,7 +37,7 @@ namespace Catan.Controllers
 
         // POST api/users/register
         [HttpPost("register")]
-        public void Post([FromBody] User prms)
+        public ActionResult<User> Post([FromBody] User prms)
         {
             User user = new User
             {
@@ -47,7 +47,7 @@ namespace Catan.Controllers
 
             DBLMethods.AddUser(user);
 
-            Ok(user.Token);
+            return Ok(user);
         }
 
         // PUT api/values/5
