@@ -33,6 +33,12 @@ namespace Catan.DBL
             using (DatabaseLayer db = new DatabaseLayer())
             {
                 Game game = db.Games.First((g) => g.Id == join.GameId );
+
+                if (game.User1 == join.UserId || game.User2 == join.UserId || game.User3 == join.UserId || game.User4 == join.UserId)
+                {
+                    return game;
+                }
+
                 if (Guid.Empty == game.User2)
                 {
                     game.User2 = join.UserId;
