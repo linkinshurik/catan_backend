@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using Catan.DBL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Catan.Migrations
 {
     [DbContext(typeof(DatabaseLayer))]
-    partial class DatabaseLayerModelSnapshot : ModelSnapshot
+    [Migration("20181021070007_Games")]
+    partial class Games
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -65,7 +65,17 @@ namespace Catan.DBL
         {
             using (DatabaseLayer db = new DatabaseLayer())
             {
-                Game game = new Game() { Id = Guid.NewGuid(), User1 = id, Admin = id ,Active = true };
+                Island island = new Island();
+                Land land = island.GetLand();
+                DBLMethods.SaveLand(land);
+
+                Game game = new Game() { 
+                    Id = Guid.NewGuid(), 
+                    User1 = id, 
+                    Admin = id,
+                    Active = true,
+                    LandId = land.Id
+                };
                 db.Add(game);
                 db.SaveChanges();
                 return game;

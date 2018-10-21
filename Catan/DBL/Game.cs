@@ -12,5 +12,6 @@ namespace Catan.DBL
         public Guid User4 { get; set; }
         public Guid Admin { get; set; }
         public bool Active { get; set; }
+        public Guid LandId { get; set; }
     }
 }

@@ -93,7 +93,7 @@ namespace Catan.Controllers
                 var game = DBLMethods.JoinGame(prms);
                 return Ok(game);
             }
-            catch (IndexOutOfRangeException e)
+            catch
             {
                 return BadRequest("There is no free space in this game");
             }
