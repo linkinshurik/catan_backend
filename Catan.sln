@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catan", "Catan\Catan.csproj", "{3645A5DD-0AE0-4304-B747-1CD27FD22F3F}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{77E97323-7284-45FB-ABF0-0C42DE159EB6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{3645A5DD-0AE0-4304-B747-1CD27FD22F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3645A5DD-0AE0-4304-B747-1CD27FD22F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3645A5DD-0AE0-4304-B747-1CD27FD22F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E97323-7284-45FB-ABF0-0C42DE159EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E97323-7284-45FB-ABF0-0C42DE159EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E97323-7284-45FB-ABF0-0C42DE159EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E97323-7284-45FB-ABF0-0C42DE159EB6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
