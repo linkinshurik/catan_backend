@@ -30,7 +30,7 @@ namespace Catan.Controllers
         {
             using (DatabaseLayer db = new DatabaseLayer())
             {
-                var user = db.Users.First( (u) => u.Id == id);
+                var user = db.Users.First((u) => u.Id == id);
                 return Ok(user);
             }
         }
@@ -64,10 +64,11 @@ namespace Catan.Controllers
     }
 
     [Route("api/games")]
-    public class GamesController: ControllerBase
+    public class GamesController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get() {
+        public ActionResult<IEnumerable<string>> Get()
+        {
             using (DatabaseLayer db = new DatabaseLayer())
             {
                 var games = db.Games.ToList();
@@ -100,14 +101,15 @@ namespace Catan.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Guid> CreateGame([FromBody] User prms) {
+        public ActionResult<Guid> CreateGame([FromBody] User prms)
+        {
             var game = DBLMethods.CreateGame(prms.Token);
             return Ok(game.Id);
         }
     }
 
     [Route("api/land")]
-    public class GameController: ControllerBase
+    public class GameController : ControllerBase
     {
         [HttpGet("{id}")]
         public ActionResult<string> Get(Guid id)
@@ -123,7 +125,8 @@ namespace Catan.Controllers
             var related = IslandGrid.GetGeksByPosition(position);
             List<IGeks> current = new List<IGeks>();
 
-            foreach ( var key in related) {
+            foreach (var key in related)
+            {
                 current.Add(gridList[key]);
             }
 
@@ -151,6 +154,25 @@ namespace Catan.Controllers
             var gameProcess = DBLMethods.GetGameStatus(id);
 
             return Ok(gameProcess);
+        }
+    }
+
+    [Route("api/onedice")]
+    public class oneDiceController : ControllerBase
+    {
+        [HttpGet]
+        public ActionResult<int> Get() {
+            return Dice.ThrowDice();
+        }
+    }
+
+    [Route("api/twodice")]
+    public class twoDiceController : ControllerBase
+    {
+        [HttpGet]
+        public ActionResult<int[]> Get()
+        {
+            return Dice.ThrowTwoDice();
         }
     }
 

@@ -1,20 +1,29 @@
 version: '3.4'
 
-services:
+services:     
   catan:
-    image: ${DOCKER_REGISTRY}catan
+    container_name: 'catan'
+    image: '${DOCKER_REGISTRY}catan'
     build:
       context: .
       dockerfile: Catan/Dockerfile
-    ports: 
-      - "80:80"
+    volumes:
+      - .:/var/www/aspnetcoreapp
+    ports:
+     - "5000:5000"
     depends_on:
-      - db
-  db:
-    image: "postgres"
-    restart: always
+     - "postgres"
+    networks:
+      - aspnet-network
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres
     environment:
       POSTGRES_PASSWORD: postgres
-    ports:
-      - "5432:5432"
-     
+    networks:
+      - aspnet-network
+
+networks:
+  aspnetcoreapp-network:
+    driver: bridge
