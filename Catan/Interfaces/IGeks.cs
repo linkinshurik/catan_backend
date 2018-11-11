@@ -8,11 +8,11 @@ namespace Catan.Interfaces
 
     public enum EGeks
     {
-        forest = 0,
-        pasture = 1,
-        arable = 2,
-        mine = 3,
-        rock = 4,
+        lumber = 0,
+        sheep = 1,
+        wheat = 2,
+        brick = 3,
+        ore = 4,
         desert = 5
     }
 
